@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>-ing форма глагола — визуальная шпаргалка</title>
+<style>
+  :root{
+    --purple:#7c3aed; --blue:#2563eb; --green:#059669; --teal:#0d9488;
+    --amber:#d97706; --indigo:#4f46e5; --pink:#db2777; --red:#dc2626;
+    --ink:#1e293b; --muted:#64748b; --bg:#eef2f9; --card:#ffffff;
+    --hl:#fff7d6;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background:
+      radial-gradient(1200px 500px at 10% -10%, #e0e7ff 0%, transparent 60%),
+      radial-gradient(1000px 500px at 110% 10%, #ccfbf1 0%, transparent 55%),
+      var(--bg);
+    color:var(--ink);
+    line-height:1.55;
+    padding:32px 16px 64px;
+  }
+  .wrap{max-width:1060px; margin:0 auto;}
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    background:linear-gradient(135deg,#312e81 0%, #4f46e5 45%, #7c3aed 100%);
+    color:#fff; border-radius:24px; padding:34px 36px;
+    box-shadow:0 18px 40px -18px rgba(79,70,229,.65);
+    position:relative; overflow:hidden;
+  }
+  header.hero::after{
+    content:"-ing"; position:absolute; right:-28px; bottom:-58px;
+    font-size:220px; font-weight:800; color:rgba(255,255,255,.08);
+    letter-spacing:-8px; line-height:1;
+  }
+  .kicker{
+    display:inline-block; font-size:12px; letter-spacing:2.5px; text-transform:uppercase;
+    background:rgba(255,255,255,.16); padding:5px 12px; border-radius:99px; margin-bottom:14px;
+  }
+  h1{font-size:clamp(28px,4.5vw,44px); line-height:1.15; font-weight:800;}
+  h1 small{display:block; font-size:clamp(15px,2vw,19px); font-weight:500; opacity:.85; margin-top:8px;}
+  .hero-tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; position:relative; z-index:1;}
+  .hero-tags span{
+    background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.25);
+    padding:5px 12px; border-radius:99px; font-size:13px;
+  }
+
+  h2.section{
+    margin:44px 0 18px; font-size:13px; letter-spacing:2.5px; text-transform:uppercase;
+    color:var(--muted); display:flex; align-items:center; gap:12px;
+  }
+  h2.section::after{content:""; flex:1; height:1px; background:#c7d2e5;}
+
+  /* ---------- MAP ---------- */
+  .map-card{
+    background:var(--card); border-radius:20px; padding:22px 18px 12px;
+    box-shadow:0 10px 30px -18px rgba(30,41,59,.35); border:1px solid #e2e8f0;
+  }
+  .map-card svg{width:100%; height:auto; display:block;}
+  .map-note{font-size:13px; color:var(--muted); text-align:center; padding:8px 10px 12px;}
+
+  /* ---------- RULE CARDS ---------- */
+  .grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(320px,1fr)); gap:18px;}
+  .card{
+    background:var(--card); border-radius:18px; padding:20px 20px 18px 22px;
+    border:1px solid #e2e8f0; border-left:6px solid var(--c, var(--blue));
+    box-shadow:0 10px 26px -20px rgba(30,41,59,.45);
+    display:flex; flex-direction:column; gap:12px;
+  }
+  .card-head{display:flex; align-items:center; gap:12px;}
+  .badge{
+    min-width:34px; height:34px; border-radius:10px; display:flex; align-items:center; justify-content:center;
+    background:var(--c); color:#fff; font-weight:800; font-size:15px; box-shadow:0 6px 14px -6px var(--c);
+  }
+  .card-head h3{font-size:17px; line-height:1.3;}
+  .card-head h3 em{font-style:normal; color:var(--c); font-size:12.5px; display:block; text-transform:uppercase; letter-spacing:1.2px;}
+  .chips{display:flex; flex-wrap:wrap; gap:6px;}
+  .chips b, .chips span.chip{
+    font-size:12.5px; font-weight:600; padding:3px 10px; border-radius:99px;
+    background:color-mix(in srgb, var(--c) 12%, #fff);
+    color:color-mix(in srgb, var(--c) 85%, #000);
+    border:1px solid color-mix(in srgb, var(--c) 30%, #fff);
+  }
+  .ex{
+    background:#f8fafc; border:1px dashed #cbd5e1; border-radius:12px;
+    padding:10px 14px; font-style:italic; font-size:15px;
+  }
+  .ex .hl{font-style:italic; font-weight:800; color:var(--c); background:var(--hl); padding:0 4px; border-radius:4px;}
+  .ex .ru{display:block; font-style:normal; font-size:12.5px; color:var(--muted); margin-top:4px;}
+  .but{
+    background:#fff7ed; border:1px solid #fdba74; border-left:4px solid var(--amber);
+    border-radius:10px; padding:10px 13px; font-size:13.5px;
+  }
+  .but strong{color:#c2410c; letter-spacing:.5px;}
+  .tip{
+    background:#ecfeff; border:1px solid #a5f3fc; border-left:4px solid var(--teal);
+    border-radius:10px; padding:10px 13px; font-size:13.5px;
+  }
+  .tip strong{color:#0f766e;}
+
+  /* ---------- CONTRAST STRIP ---------- */
+  .vs{
+    display:grid; grid-template-columns:1fr auto 1fr; gap:14px; align-items:stretch;
+    background:var(--card); border:1px solid #e2e8f0; border-radius:20px; padding:20px;
+    box-shadow:0 10px 30px -18px rgba(30,41,59,.35);
+  }
+  .vs .side{border-radius:14px; padding:16px 18px; font-size:14.5px;}
+  .vs .side.proc{background:#ecfdf5; border:1px solid #a7f3d0;}
+  .vs .side.done{background:#eff6ff; border:1px solid #bfdbfe;}
+  .vs .side h4{font-size:15.5px; margin-bottom:6px;}
+  .vs .side.proc h4{color:#047857;}
+  .vs .side.done h4{color:#1d4ed8;}
+  .vs .side .sent{font-style:italic; margin-top:8px; background:#fff; border-radius:8px; padding:8px 10px; border:1px solid #e2e8f0;}
+  .vs .side .sent b{color:var(--red); font-style:italic;}
+  .vs .mid{
+    display:flex; align-items:center; justify-content:center; font-weight:800; color:var(--muted);
+    font-size:13px; letter-spacing:2px; writing-mode:vertical-rl; text-orientation:mixed;
+  }
+
+  /* ---------- QUIZ ---------- */
+  .quiz{
+    background:linear-gradient(160deg,#1e1b4b 0%, #312e81 60%, #4338ca 100%);
+    border-radius:24px; padding:30px 30px 34px; color:#e0e7ff;
+    box-shadow:0 20px 45px -20px rgba(49,46,129,.7);
+  }
+  .quiz h2{color:#fff; font-size:24px; margin-bottom:4px;}
+  .quiz .sub{font-size:14px; color:#a5b4fc; margin-bottom:22px;}
+  .q{
+    background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12);
+    border-radius:16px; padding:18px 18px 16px; margin-bottom:16px;
+  }
+  .q p.qtext{font-size:16px; margin-bottom:12px;}
+  .q p.qtext b{color:#fbbf24;}
+  .opts{display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:10px;}
+  .opts button{
+    font:inherit; font-size:14.5px; padding:10px 14px; border-radius:12px; cursor:pointer;
+    background:rgba(255,255,255,.1); color:#e0e7ff; border:1.5px solid rgba(255,255,255,.22);
+    transition:.15s;
+  }
+  .opts button:hover:not(:disabled){background:rgba(255,255,255,.2); transform:translateY(-1px);}
+  .opts button:disabled{cursor:default;}
+  .opts button.correct{background:#059669; border-color:#34d399; color:#fff; font-weight:700;}
+  .opts button.wrong{background:#b91c1c; border-color:#f87171; color:#fff;}
+  .expl{
+    display:none; margin-top:12px; font-size:13.5px; background:rgba(255,255,255,.08);
+    border-left:3px solid #fbbf24; padding:9px 12px; border-radius:8px; color:#c7d2fe;
+  }
+  .expl.show{display:block;}
+  .score{
+    text-align:center; font-size:15px; color:#a5b4fc; margin-top:6px;
+  }
+  .score b{color:#fbbf24; font-size:19px;}
+
+  footer.rule-of-thumb{
+    margin-top:34px; text-align:center; font-size:14px; color:var(--muted);
+    background:#fff; border:1px dashed #c7d2e5; border-radius:16px; padding:18px 20px;
+  }
+  footer.rule-of-thumb b{color:var(--ink);}
+  footer.rule-of-thumb .k{
+    display:inline-block; background:var(--hl); border:1px solid #fde68a;
+    padding:1px 8px; border-radius:6px; font-weight:700; color:#92400e;
+  }
+
+  @media (max-width:720px){
+    .vs{grid-template-columns:1fr;}
+    .vs .mid{writing-mode:horizontal-tb; padding:2px 0;}
+    header.hero::after{font-size:140px;}
+  }
+  @media print{
+    body{background:#fff; padding:0;}
+    .quiz{background:#1e1b4b !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ================= HERO ================= -->
+  <header class="hero">
+    <span class="kicker">Visual Learning · Грамматика</span>
+    <h1>-ing форма глагола
+      <small>Когда и почему мы ставим <b>-ing</b> — на одной странице</small>
+    </h1>
+    <div class="hero-tags">
+      <span>1️⃣ Подлежащее</span><span>2️⃣ Глаголы</span><span>3️⃣ Выражения</span>
+      <span>4️⃣ Предлоги</span><span>5️⃣ Глаголы восприятия</span><span>⚡ Проверь себя</span>
+    </div>
+  </header>
+
+  <!-- ================= MAP ================= -->
+  <h2 class="section">Карта употребления</h2>
+  <div class="map-card">
+    <svg viewBox="0 0 850 300" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#94a3b8"/>
+        </marker>
+        <linearGradient id="root" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#4f46e5"/><stop offset="1" stop-color="#7c3aed"/>
+        </linearGradient>
+      </defs>
+
+      <!-- root -->
+      <rect x="315" y="16" width="220" height="52" rx="14" fill="url(#root)"/>
+      <text x="425" y="47" text-anchor="middle" fill="#fff" font-size="19" font-weight="800">-ing форма</text>
+
+      <!-- spine -->
+      <path d="M425,68 V105" stroke="#94a3b8" stroke-width="2.5" fill="none"/>
+      <path d="M115,105 H735" stroke="#94a3b8" stroke-width="2.5" fill="none"/>
+
+      <!-- drops -->
+      <path d="M115,105 V158" stroke="#94a3b8" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+      <path d="M321,105 V158" stroke="#94a3b8" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+      <path d="M529,105 V158" stroke="#94a3b8" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+      <path d="M735,105 V158" stroke="#94a3b8" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+
+      <!-- branch 1 -->
+      <rect x="25" y="166" width="180" height="96" rx="14" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+      <text x="115" y="192" text-anchor="middle" fill="#7c3aed" font-size="15" font-weight="800">① Подлежащее</text>
+      <text x="115" y="214" text-anchor="middle" fill="#1e293b" font-size="13" font-style="italic">Swimming is a good</text>
+      <text x="115" y="231" text-anchor="middle" fill="#1e293b" font-size="13" font-style="italic">form of exercise.</text>
+      <text x="115" y="252" text-anchor="middle" fill="#64748b" font-size="11">действие как предмет</text>
+
+      <!-- branch 2 -->
+      <rect x="231" y="166" width="180" height="96" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+      <text x="321" y="192" text-anchor="middle" fill="#2563eb" font-size="15" font-weight="800">② После глаголов</text>
+      <text x="321" y="214" text-anchor="middle" fill="#1e293b" font-size="13" font-style="italic">mind, avoid, suggest…</text>
+      <text x="321" y="231" text-anchor="middle" fill="#1e293b" font-size="13" font-style="italic">Would you mind closing…?</text>
+      <text x="321" y="252" text-anchor="middle" fill="#64748b" font-size="11">+ фикс. выражения (it's no use…)</text>
+
+      <!-- branch 3 -->
+      <rect x="439" y="166" width="180" height="96" rx="14" fill="#f0fdfa" stroke="#0d9488" stroke-width="2"/>
+      <text x="529" y="192" text-anchor="middle" fill="#0d9488" font-size="15" font-weight="800">③ После предлогов</text>
+      <text x="529" y="214" text-anchor="middle" fill="#1e293b" font-size="13" font-style="italic">expert at fixing · on paying</text>
+      <text x="529" y="231" text-anchor="middle" fill="#1e293b" font-size="13" font-style="italic">look forward to getting…</text>
+      <text x="529" y="252" text-anchor="middle" fill="#64748b" font-size="11">предлог ⇒ всегда -ing (to тоже!)</text>
+
+      <!-- branch 4 -->
+      <rect x="645" y="166" width="180" height="96" rx="14" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+      <text x="735" y="192" text-anchor="middle" fill="#dc2626" font-size="15" font-weight="800">④ Восприятие</text>
+      <text x="735" y="214" text-anchor="middle" fill="#1e293b" font-size="13" font-style="italic">see · watch · hear · feel…</text>
+      <text x="735" y="231" text-anchor="middle" fill="#1e293b" font-size="13" font-style="italic">watched son playing…</text>
+      <text x="735" y="252" text-anchor="middle" fill="#64748b" font-size="11">-ing = процесс · bare inf = факт</text>
+
+      <!-- bottom legend -->
+      <rect x="215" y="276" width="420" height="20" rx="10" fill="#e2e8f0"/>
+      <text x="425" y="290" text-anchor="middle" fill="#475569" font-size="12" font-weight="600">Частица to после предлога тоже требует -ing: look forward to seeing you</text>
+    </svg>
+    <p class="map-note">Ветка ② включает выражения: <i>be busy, it's no use, it's (not) worth, can't stand, have difficulty (in)…</i></p>
+  </div>
+
+  <!-- ================= RULES ================= -->
+  <h2 class="section">8 правил — по порядку из учебника</h2>
+  <div class="grid">
+
+    <!-- 1 -->
+    <div class="card" style="--c:var(--purple)">
+      <div class="card-head"><div class="badge">1</div>
+        <h3>В роли подлежащего<em>Subject</em></h3></div>
+      <div class="ex"><span class="hl">Swimming</span> is a good form of exercise.
+        <span class="ru">Плавание — хорошая форма физических упражнений.</span></div>
+      <div class="tip"><strong>Совет:</strong> -ing существительное = само действие (the activity itself): <i>Reading relaxes me.</i></div>
+    </div>
+
+    <!-- 2 -->
+    <div class="card" style="--c:var(--blue)">
+      <div class="card-head"><div class="badge">2</div>
+        <h3>После глаголов со списком<em>Verb + -ing</em></h3></div>
+      <div class="chips">
+        <span class="chip">admit</span><span class="chip">appreciate</span><span class="chip">avoid</span>
+        <span class="chip">consider</span><span class="chip">continue</span><span class="chip">deny</span>
+        <span class="chip">fancy</span><span class="chip">imagine</span><span class="chip">mind</span>
+        <span class="chip">miss</span><span class="chip">practise</span><span class="chip">prevent</span>
+        <span class="chip">quit</span><span class="chip">save</span><span class="chip">suggest</span>
+      </div>
+      <div class="ex">Would you <span class="hl">mind closing</span> the window?
+        <span class="ru">Не могли бы вы закрыть окно? (fancy — только для занятий/activities)</span></div>
+    </div>
+
+    <!-- 3 -->
+    <div class="card" style="--c:var(--green)">
+      <div class="card-head"><div class="badge">3</div>
+        <h3>Глаголы предпочтения<em>love · like · enjoy · prefer · dislike · hate</em></h3></div>
+      <div class="chips">
+        <span class="chip">love</span><span class="chip">like</span><span class="chip">enjoy</span>
+        <span class="chip">prefer</span><span class="chip">dislike</span><span class="chip">hate</span>
+      </div>
+      <div class="ex">Chris <span class="hl">prefers eating</span> home-cooked meals.
+        <span class="ru">Общее предпочтение: «вообще предпочитаю».</span></div>
+      <div class="but"><strong>НО:</strong> особое (конкретное) предпочтение → <b>инфинитив</b>:
+        <i>John <b>would prefer to eat</b> at a restaurant tonight.</i> — сегодня вечером, именно сейчас.</div>
+    </div>
+
+    <!-- 4 -->
+    <div class="card" style="--c:var(--teal)">
+      <div class="card-head"><div class="badge">4</div>
+        <h3>После фиксированных выражений<em>Fixed expressions</em></h3></div>
+      <div class="chips">
+        <span class="chip">be busy</span><span class="chip">it's no use</span><span class="chip">it's no good</span>
+        <span class="chip">it's (not) worth</span><span class="chip">what's the use of</span><span class="chip">can't help</span>
+        <span class="chip">there's no point (in)</span><span class="chip">can't stand</span>
+        <span class="chip">have difficulty (in)</span><span class="chip">have trouble</span>
+      </div>
+      <div class="ex">What's the use of <span class="hl">buying</span> a car when you don't even have a driver's license?
+        <span class="ru">Какой толок покупать машину, если у тебя даже нет прав?</span></div>
+    </div>
+
+    <!-- 5 -->
+    <div class="card" style="--c:var(--amber)">
+      <div class="card-head"><div class="badge">5</div>
+        <h3>После spend · waste · lose<em>Time / money + -ing</em></h3></div>
+      <div class="chips"><span class="chip">spend</span><span class="chip">waste</span><span class="chip">lose</span></div>
+      <div class="ex">George <span class="hl">spent two hours trying</span> to fix the DVD player.
+        <span class="ru">Джордж потратил два часа на попытки починить DVD-плеер.</span></div>
+      <div class="tip"><strong>Формула:</strong> spend/waste + время или деньги + <b>-ing</b>.</div>
+    </div>
+
+    <!-- 6 -->
+    <div class="card" style="--c:var(--indigo)">
+      <div class="card-head"><div class="badge">6</div>
+        <h3>После предлога TO<em>to ≠ частица, а предлог</em></h3></div>
+      <div class="chips">
+        <span class="chip">look forward to</span><span class="chip">be/get used to</span>
+        <span class="chip">in addition to</span><span class="chip">object to</span>
+      </div>
+      <div class="ex">The children <span class="hl">look forward to getting</span> a dog.
+        <span class="ru">Дети с нетерпением ждут, когда заведут собаку.</span></div>
+      <div class="tip"><strong>Ловушка:</strong> здесь <b>to = предлог</b>, поэтому -ing.
+        <br>↔ <i>used to + -ing</i> = «привык к» · <i>used to + inf</i> = «некогда».</div>
+    </div>
+
+    <!-- 7 -->
+    <div class="card" style="--c:var(--pink)">
+      <div class="card-head"><div class="badge">7</div>
+        <h3>Дополнение после других предлогов<em>Preposition + -ing</em></h3></div>
+      <div class="ex">John is an expert <span class="hl">at fixing</span> computers.
+        <span class="ru">Джон — знаток починки компьютеров.</span></div>
+      <div class="ex">Sophie insisted <span class="hl">on paying</span> for dinner.
+        <span class="ru">Софи настояла оплатить ужин.</span></div>
+      <div class="tip"><strong>Правило:</strong> после <b>любого</b> предлога (<i>at, on, in, for, about, without…</i>) — только -ing.</div>
+    </div>
+
+    <!-- 8 -->
+    <div class="card" style="--c:var(--red)">
+      <div class="card-head"><div class="badge">8</div>
+        <h3>Глаголы восприятия<em>hear · listen to · notice · see · watch · feel</em></h3></div>
+      <div class="chips">
+        <span class="chip">hear</span><span class="chip">listen to</span><span class="chip">notice</span>
+        <span class="chip">see</span><span class="chip">watch</span><span class="chip">feel</span>
+      </div>
+      <div class="ex"><b style="font-style:normal;color:#94a3b8">Процесс (-ing):</b> She <span class="hl">watched her son playing</span> with his toys.
+        <span class="ru">Она наблюдала за действием в процессе.</span></div>
+      <div class="but"><strong>НО:</strong> завершённое действие → <b>инфинитив без to</b>:
+        <i>She <b>watched her son play</b> with his teddy bear and then put it away.</i>
+        <br><span style="color:#9a3412">Действия были завершены (она видела всё целиком).</span></div>
+    </div>
+  </div>
+
+  <!-- ================= CONTRAST ================= -->
+  <h2 class="section">Две ловушки — сравни визуально</h2>
+  <div class="vs">
+    <div class="side proc">
+      <h4>🟩 -ing → процесс, «в процессе»</h4>
+      <div>Глаголы восприятия + <b>-ing</b>: действие не завершено, наблюдаем ход события.</div>
+      <div class="sent">She watched her son <b>playing</b> with his toys.<br>
+        <span style="font-style:normal;font-size:12.5px;color:#64748b">(Она наблюдала за действием в процессе.)</span></div>
+      <div style="margin-top:10px">И <b>prefer/love/hate + -ing</b> = общее предпочтение вообще:
+        <br><i>Chris <b>prefers eating</b> home-cooked meals.</i></div>
+    </div>
+    <div class="mid">VS</div>
+    <div class="side done">
+      <h4>🟦 инфинитив → завершённый факт / конкретный случай</h4>
+      <div>Глаголы восприятия + <b>bare infinitive</b> (без to): видели действие от начала до конца.</div>
+      <div class="sent">She watched her son <b>play</b> with his teddy bear and then put it away.<br>
+        <span style="font-style:normal;font-size:12.5px;color:#64748b">(Действия были завершены.)</span></div>
+      <div style="margin-top:10px">И <b>would prefer + to-inf</b> = особое предпочтение в конкретной ситуации:
+        <br><i>John <b>would prefer to eat</b> at a restaurant tonight.</i></div>
+    </div>
+  </div>
+
+  <!-- ================= QUIZ ================= -->
+  <h2 class="section">Проверь себя</h2>
+  <div class="quiz" id="quiz">
+    <h2>⚡ Мини-тест</h2>
+    <p class="sub">Выбери правильную форму. После ответа появится объяснение.</p>
+
+    <div class="q" data-answer="1">
+      <p class="qtext">1. Would you mind ___ the window?</p>
+      <div class="opts">
+        <button data-i="0">close</button>
+        <button data-i="1">closing</button>
+      </div>
+      <div class="expl">✔ <b>mind</b> — из списка глаголов, требующих -ing (правило 2).</div>
+    </div>
+
+    <div class="q" data-answer="1">
+      <p class="qtext">2. John would prefer ___ at a restaurant tonight. (конкретный план)</p>
+      <div class="opts">
+        <button data-i="0">eating</button>
+        <button data-i="1">to eat</button>
+      </div>
+      <div class="expl">✔ Особое предпочтение в конкретной ситуации → <b>инфинитив</b> (правило 3, «НО»).</div>
+    </div>
+
+    <div class="q" data-answer="0">
+      <p class="qtext">3. George spent two hours ___ the DVD player.</p>
+      <div class="opts">
+        <button data-i="0">trying to fix</button>
+        <button data-i="1">to try to fix</button>
+      </div>
+      <div class="expl">✔ После <b>spend</b> + время → -ing (правило 5).</div>
+    </div>
+
+    <div class="q" data-answer="1">
+      <p class="qtext">4. The children look forward to ___ a dog.</p>
+      <div class="opts">
+        <button data-i="0">get</button>
+        <button data-i="1">getting</button>
+      </div>
+      <div class="expl">✔ <b>to</b> в <i>look forward to</i> — предлог, а не частица инфинитива → -ing (правило 6).</div>
+    </div>
+
+    <div class="q" data-answer="1">
+      <p class="qtext">5. She watched her son ___ with his toys. (наблюдала в процессе)</p>
+      <div class="opts">
+        <button data-i="0">play</button>
+        <button data-i="1">playing</button>
+      </div>
+      <div class="expl">✔ Описание незавершённого действия (процесс) → -ing (правило 8). Если бы действие было завершено — <i>watched her son play</i>.</div>
+    </div>
+
+    <div class="q" data-answer="0">
+      <p class="qtext">6. John is an expert ___ fixing computers.</p>
+      <div class="opts">
+        <button data-i="0">at</button>
+        <button data-i="1">to</button>
+      </div>
+      <div class="expl">✔ После предлога (<b>at</b>) — всегда -ing (правило 7). Вариант <i>to</i> был бы верен только в устойчивых выражениях типа <i>look forward to</i>.</div>
+    </div>
+
+    <p class="score" id="score">Результат: <b>–</b> / 6</p>
+  </div>
+
+  <footer class="rule-of-thumb">
+    <b>Правило большого пальца:</b> предлог → <span class="k">всегда -ing</span> ·
+    глагол из «инг-списка» → <span class="k">-ing</span> ·
+    <i>love/hate/prefer</i> → <span class="k">-ing (вообще)</span> vs <i>would prefer</i> → <span class="k">to-inf (именно сейчас)</span> ·
+    <i>see/watch/hear</i> → <span class="k">-ing (процесс)</span> vs <span class="k">bare inf (факт)</span>.
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var answered = 0, correct = 0, total = document.querySelectorAll('.q').length;
+  var scoreEl = document.getElementById('score');
+  document.querySelectorAll('.q').forEach(function(q){
+    var ans = parseInt(q.getAttribute('data-answer'), 10);
+    var expl = q.querySelector('.expl');
+    q.querySelectorAll('.opts button').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if(q.dataset.done) return;
+        q.dataset.done = "1";
+        var i = parseInt(btn.getAttribute('data-i'), 10);
+        q.querySelectorAll('.opts button').forEach(function(b, bi){
+          b.disabled = true;
+          if(bi === ans) b.classList.add('correct');
+        });
+        if(i === ans){ correct++; }
+        else { btn.classList.add('wrong'); }
+        expl.classList.add('show');
+        answered++;
+        scoreEl.innerHTML = 'Результат: <b>' + correct + '</b> / ' + total;
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
